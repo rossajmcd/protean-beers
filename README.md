@@ -19,7 +19,7 @@ Includes a [Protean](https://github.com/passivsystems/protean) codex *beers.edn*
 
  runs on port 3002
 
-### Resources
+### Accessing resources
 
 List starches:
 
@@ -45,6 +45,18 @@ Brew a beverage:
 
     curl -v -X POST -H 'Authorization: XYZBearer token' -H 'Content-Type: application/json' -H 'Content-type: application/json' --data '{"starch":"/starches/wheat","yeast":"/yeasts/yeast","flavouring":"/flavourings/golding-hops"}' 'http://host:3002/beers/brew'
 
+
+### Automatically integration testing the service
+
+The below will automatically (incrementally) integration test the service.  Host and port should be configured to point to an instance of Protean (admin port).
+
+Testing specific resources:
+
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers token starches/pick yeasts/pick flavourings/pick"],"seed":{"drink":"ale"}}' 'http://host:port/test'
+
+Testing the entire service:
+
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://localhost:3001/test'
 
 
 ## Contributing
