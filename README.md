@@ -43,12 +43,19 @@ Get a yeast for lager beverage type:
 
 Brew a beverage:
 
-    curl -v -X POST -H 'Authorization: XYZBearer token' -H 'Content-Type: application/json' -H 'Content-type: application/json' --data '{"starch":"/starches/wheat","yeast":"/yeasts/yeast","flavouring":"/flavourings/golding-hops"}' 'http://host:3002/beers/brew'
+    curl -v -X POST -H 'Authorization: XYZBearer token' -H 'Content-Type: application/json' -H 'Content-type: application/json' --data '{"starch":"/starches/wheat","yeast":"/yeasts/yeast","flavouring":"/flavourings/golding-hops"}' 'http://host:port/beers/brew'
+
+
+### Integration testing the service simulation
+
+N.B. The following merely aggregates the responses from hitting the simulated resources - nothing too useful at the time of writing.
+
+    curl -v -X POST -H "Content-Type: application/json" --data '{"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:port/test'
 
 
 ### Automatically integration testing the service
 
-The below will automatically (incrementally) integration test the service.  Host and port should be configured to point to an instance of Protean (admin port).
+The below will automatically (incrementally) integration test the service.  Host and port should be configured to point to an instance of Protean (admin port).  At the time of writing this is a naive test mechanism which produces a JSON payload... JUnit output is in the pipeline.
 
 Testing specific resources:
 
@@ -56,7 +63,7 @@ Testing specific resources:
 
 Testing the entire service:
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://localhost:3001/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:port/test'
 
 
 ## Contributing
