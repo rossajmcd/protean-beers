@@ -1,10 +1,10 @@
 (ns beers.core
+  "A sample API/webapp for experimenting with API regularity."
   (:require [com.stuartsierra.component :as component]
             [ring.adapter.jetty :as jetty]
             [compojure.core :refer [routes ANY DELETE GET POST PUT]]
             [compojure.handler :as hdr]
             [cheshire.core :as jsn])
-  (:use ring.adapter.jetty)
   (:gen-class))
 
 ;; =============================================================================
@@ -147,7 +147,7 @@
   (start [this]
     (println ";; Starting Server")
     (assoc this :jetty
-           (run-jetty (-> (myroutes this) hdr/api) {:port port}))))
+           (jetty/run-jetty (-> (myroutes this) hdr/api) {:port port}))))
 
 (defn server [] (map->Server {:port 3002}))
 
