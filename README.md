@@ -50,7 +50,7 @@ Brew a beverage:
 
 N.B. The following merely aggregates the responses from hitting the simulated resources - nothing too useful at the time of writing.
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:port/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:3001/test'
 
 
 ### Automatically integration testing the service
@@ -59,11 +59,11 @@ The below will automatically (incrementally) integration test the service.  Host
 
 Testing specific resources:
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers token starches/pick yeasts/pick flavourings/pick"],"seed":{"drink":"ale"}}' 'http://host:port/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers token starches/pick yeasts/pick flavourings/pick"],"seed":{"drink":"ale"}}' 'http://host:3001/test'
 
 Testing the entire service:
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:port/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:3001/test'
 
 
 ## Contributing
