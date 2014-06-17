@@ -19,8 +19,8 @@
         :doc "Get starch sources"
         :req {:headers {"Authorization" "psv+Bearer token"}}
         :rsp {
-          :success-code 200 
-          :body #{"/starches/wheat" "/starches/lager-starch"}
+          :success-code 200
+          :body ["/starches/malted-grain" "/starches/malted-grain"]
         }
       }
 
@@ -30,7 +30,7 @@
           :headers {"Authorization" "psv+Bearer token"}
           :req-params {"drink" "psv+drink"}
         }
-        :rsp {:success-code 200 :content-type "text/plain" :body "/starches/wheat"}
+        :rsp {:success-code 200 :content-type "text/plain" :body "/starches/malted-grain"}
       }
 
       "yeasts" {
@@ -38,7 +38,7 @@
         :req {:headers {"Authorization" "psv+Bearer token"}}
         :rsp {
           :success-code 200
-          :body #{"/yeasts/yeast" "/yeasts/lager-yeast"}
+          :body #{"/yeasts/saccharomyces-cerevisiae" "/yeasts/saccharomyces-uvarum"}
         }
       }
 
@@ -48,7 +48,7 @@
           :headers {"Authorization" "psv+Bearer token"}
           :req-params {"drink" "psv+drink"}
         }
-        :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/yeast"}
+        :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/saccharomyces-cerevisiae"}
       }
 
       "flavourings" {

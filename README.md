@@ -23,34 +23,38 @@ Includes a [Protean](https://github.com/passivsystems/protean) codex *beers.edn*
 
 List starches:
 
-    curl -v -H 'Authorization: XYZBearer token' 'http://host:3002/beers/starches'
+    curl -v -H 'Authorization: XYZBearer token' 'http://localhost:3002/beers/starches'
 
 List yeasts:
 
-    curl -v -H 'Authorization: XYZBearer token' 'http://host:3002/beers/yeasts'
+    curl -v -H 'Authorization: XYZBearer token' 'http://localhost:3002/beers/yeasts'
 
 List flavourings:
 
-	curl -v -H 'Authorization: XYZBearer token' 'http://host:3002/beers/flavourings'
+	curl -v -H 'Authorization: XYZBearer token' 'http://localhost:3002/beers/flavourings'
 
 Get a starch source for ale beverage type:
 
-    curl -v -H 'Authorization: XYZBearer token' 'http://host:3002/beers/starches/pick?drink=ale'
+    curl -v -H 'Authorization: XYZBearer token' 'http://localhost:3002/beers/starches/pick?drink=ale'
 
 Get a yeast for lager beverage type:
 
-    curl -v -H 'Authorization: XYZBearer token' 'http://host:3002/beers/yeasts/pick?drink=lager'
+    curl -v -H 'Authorization: XYZBearer token' 'http://localhost:3002/beers/yeasts/pick?drink=lager'
+
+Get a flavour for ale beverage type:
+
+    curl -v -H 'Authorization: XYZBearer token' 'http://localhost:3002/beers/flavourings/pick?drink=lager'
 
 Brew a beverage:
 
-    curl -v -X POST -H 'Authorization: XYZBearer token' -H 'Content-Type: application/json' -H 'Content-type: application/json' --data '{"starch":"/starches/wheat","yeast":"/yeasts/yeast","flavouring":"/flavourings/golding-hops"}' 'http://host:port/beers/brew'
+    curl -v -X POST -H 'Authorization: XYZBearer token' -H 'Content-Type: application/json' -H 'Content-type: application/json' --data '{"starch":"/starches/malted-grain","yeast":"/yeasts/saccharomyces-cerevisiae","flavouring":"/flavourings/golding-hops"}' 'http://localhost:3002/beers/brew'
 
 
 ### Integration testing the service simulation
 
 N.B. The following merely aggregates the responses from hitting the simulated resources - nothing too useful at the time of writing.
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:3001/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"locs":["beers"],"seed":{"drink":"ale"}}' 'http://localhost:3001/test'
 
 
 ### Automatically integration testing the service
@@ -59,16 +63,16 @@ The below will automatically (incrementally) integration test the service.  Host
 
 Testing specific resources:
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers token starches/pick yeasts/pick flavourings/pick"],"seed":{"drink":"ale"}}' 'http://host:3001/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers token starches/pick yeasts/pick flavourings/pick"],"seed":{"drink":"ale"}}' 'http://localhost:3001/test'
 
 Testing the entire service:
 
-    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://host:3001/test'
+    curl -v -X POST -H "Content-Type: application/json" --data '{"port":3002,"locs":["beers"],"seed":{"drink":"ale"}}' 'http://localhost:3001/test'
 
 
 ## Contributing
 
-All contributions ideas/pull requests/bug reports are welcome, we hope you find it useful. 
+All contributions ideas/pull requests/bug reports are welcome, we hope you find it useful.
 
 
 ## License

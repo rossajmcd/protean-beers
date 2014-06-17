@@ -31,12 +31,12 @@
 
 (defn store [host port] (map->Store {:host host :port port}))
 
-(defonce ale-starch "/starches/wheat")
-(defonce ale-yeast "/yeasts/yeast")
+(defonce ale-starch "/starches/malted-grain")
+(defonce ale-yeast "/yeasts/saccharomyces-cerevisiae")
 (defonce ale-flavour "/flavourings/golding-hops")
 
-(defonce lager-starch "/starches/lager-starch")
-(defonce lager-yeast "/yeasts/lager-yeast")
+(defonce lager-starch "/starches/malted-grain")
+(defonce lager-yeast "/yeasts/saccharomyces-uvarum")
 (defonce lager-flavour "/flavourings/cascade-hops")
 
 (defonce starches-src {:ale ale-starch :lager lager-starch})
@@ -57,7 +57,7 @@
 (defn store-yeasts [store] (vals yeasts-src))
 
 (defn store-yeast [store drink]
-  (println ";; connection : " (:connection store)) (drink yeasts-src)) 
+  (println ";; connection : " (:connection store)) (drink yeasts-src))
 
 (defn store-flavourings [store] (vals flavourings-src))
 
@@ -92,7 +92,7 @@
 (defn flavourings [{:keys [store]}] (store-flavourings store))
 (defn flavourings-pick [{:keys [store]} drink] (store-flavouring store drink))
 
-(defn brew [{:keys [store]} body] 
+(defn brew [{:keys [store]} body]
   (let [s (body "starch")
         y (body "yeast")
         f (body "flavouring")]
