@@ -7,80 +7,95 @@
   :beers {
     :paths {
       "token" {
-        :doc "Get an auth token"
-        :rsp {
-          :success-code 200
-          :body-res "access_token"
-          :body {"access_token" "mytoken" "token_type" "bearer"}
+        :get {
+          :doc "Get an auth token"
+          :rsp {
+            :success-code 200
+            :body-res "access_token"
+            :body {"access_token" "mytoken" "token_type" "bearer"}
+          }
         }
       }
 
       "starches" {
-        :doc "Get starch sources"
-        :req {:headers {"Authorization" "psv+Bearer token"}}
-        :rsp {
-          :success-code 200
-          :body ["/starches/malted-grain" "/starches/malted-grain"]
+        :get {
+          :doc "Get starch sources"
+          :req {:headers {"Authorization" "psv+Bearer token"}}
+          :rsp {
+            :success-code 200
+            :body ["/starches/malted-grain" "/starches/malted-grain"]
+          }
         }
       }
 
       "starches/pick" {
-        :doc "Get a starch source suitable for a specific drink type"
-        :req {
-          :headers {"Authorization" "psv+Bearer token"}
-          :req-params {"drink" "psv+drink"}
+        :get {
+          :doc "Get a starch source suitable for a specific drink type"
+          :req {
+            :headers {"Authorization" "psv+Bearer token"}
+            :req-params {"drink" "psv+drink"}
+          }
+          :rsp {:success-code 200 :content-type "text/plain" :body "/starches/malted-grain"}
         }
-        :rsp {:success-code 200 :content-type "text/plain" :body "/starches/malted-grain"}
       }
 
       "yeasts" {
-        :doc "Get yeasts"
-        :req {:headers {"Authorization" "psv+Bearer token"}}
-        :rsp {
-          :success-code 200
-          :body #{"/yeasts/saccharomyces-cerevisiae" "/yeasts/saccharomyces-uvarum"}
+        :get {
+          :doc "Get yeasts"
+          :req {:headers {"Authorization" "psv+Bearer token"}}
+          :rsp {
+            :success-code 200
+            :body #{"/yeasts/saccharomyces-cerevisiae" "/yeasts/saccharomyces-uvarum"}
+          }
         }
       }
 
       "yeasts/pick" {
-        :doc "Get a yeast suitable for a specific drink type"
-        :req {
-          :headers {"Authorization" "psv+Bearer token"}
-          :req-params {"drink" "psv+drink"}
+        :get {
+          :doc "Get a yeast suitable for a specific drink type"
+          :req {
+            :headers {"Authorization" "psv+Bearer token"}
+            :req-params {"drink" "psv+drink"}
+          }
+          :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/saccharomyces-cerevisiae"}
         }
-        :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/saccharomyces-cerevisiae"}
       }
 
       "flavourings" {
-        :doc "Get flavourings"
-        :req {:headers {"Authorization" "psv+Bearer token"}}
-        :rsp {
-          :success-code 200
-          :body #{"/flavourings/golding-hops" "/flavourings/cascade-hops"}
+        :get {
+          :doc "Get flavourings"
+          :req {:headers {"Authorization" "psv+Bearer token"}}
+          :rsp {
+            :success-code 200
+            :body #{"/flavourings/golding-hops" "/flavourings/cascade-hops"}
+          }
         }
       }
 
       "flavourings/pick" {
-        :doc "Get a flavouring suitable for a specific drink type"
-        :req {
-          :headers {"Authorization" "psv+Bearer token"}
-          :req-params {"drink" "psv+drink"}
+        :get {
+          :doc "Get a flavouring suitable for a specific drink type"
+          :req {
+            :headers {"Authorization" "psv+Bearer token"}
+            :req-params {"drink" "psv+drink"}
+          }
+          :rsp {:success-code 200 :content-type "text/plain" :body "/flavourings/golding-hops"}
         }
-        :rsp {:success-code 200 :content-type "text/plain" :body "/flavourings/golding-hops"}
       }
 
       "brew" {
-        :doc "Brew a drink given a bag of ingredients"
-        :req {
-          :method :post
-          :headers {"Authorization" "psv+Bearer token" "Content-Type" "application/json"}
-          :body {
-            "starch"     "/starches/psv+"
-            "yeast"      "/yeasts/psv+"
-            "flavouring" "/flavourings/psv+"
+        :post {
+          :doc "Brew a drink given a bag of ingredients"
+          :req {
+            :headers {"Authorization" "psv+Bearer token" "Content-Type" "application/json"}
+            :body {
+              "starch"     "/starches/psv+"
+              "yeast"      "/yeasts/psv+"
+              "flavouring" "/flavourings/psv+"
+            }
           }
+          :rsp {:success-code 200 :body "/drinks/ale"}
         }
-        :rsp {:success-code 200 :body "/drinks/ale"}
       }
     }
   }
