@@ -33,7 +33,7 @@
           :doc "Get a starch source suitable for a specific drink type"
           :req {
             :headers {"Authorization" "psv+Bearer token"}
-            :req-params {"drink" "psv+drink"}
+            :query-params {"drink" "psv+drink"}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/starches/malted-grain"}
         }
@@ -55,7 +55,7 @@
           :doc "Get a yeast suitable for a specific drink type"
           :req {
             :headers {"Authorization" "psv+Bearer token"}
-            :req-params {"drink" "psv+drink"}
+            :query-params {"drink" "psv+drink"}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/saccharomyces-cerevisiae"}
         }
@@ -77,7 +77,7 @@
           :doc "Get a flavouring suitable for a specific drink type"
           :req {
             :headers {"Authorization" "psv+Bearer token"}
-            :req-params {"drink" "psv+drink"}
+            :query-params {"drink" "psv+drink"}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/flavourings/golding-hops"}
         }
