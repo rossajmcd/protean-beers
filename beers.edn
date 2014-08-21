@@ -34,6 +34,7 @@
           :req {
             :headers {"Authorization" "psv+Bearer token"}
             :query-params {"drink" "psv+drink"}
+            :gen {"drink" {:type "String" :examples ["ale" "lager"]}}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/starches/malted-grain"}
         }
@@ -56,6 +57,7 @@
           :req {
             :headers {"Authorization" "psv+Bearer token"}
             :query-params {"drink" "psv+drink"}
+            :gen {"drink" {:type "String" :examples ["ale" "lager"]}}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/saccharomyces-cerevisiae"}
         }
@@ -78,6 +80,7 @@
           :req {
             :headers {"Authorization" "psv+Bearer token"}
             :query-params {"drink" "psv+drink"}
+            :gen {"drink" {:type "String" :examples ["ale" "lager"]}}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/flavourings/golding-hops"}
         }
@@ -94,7 +97,7 @@
               "flavouring" "/flavourings/psv+"
             }
           }
-          :rsp {:success-code 200 :body "/drinks/ale"}
+          :rsp {:status 200 :success-code 200 :body "/drinks/ale"}
         }
       }
     }
