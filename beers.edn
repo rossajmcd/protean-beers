@@ -33,7 +33,7 @@
           :doc "Get a starch source suitable for a specific drink type"
           :req {
             :headers {"Authorization" "psv+Bearer token"}
-            :query-params {"drink" "psv+drink"}
+            :query-params {:required {"drink" "psv+drink"}}
             :gen {"drink" {:type "String" :examples ["ale" "lager"]}}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/starches/malted-grain"}
@@ -56,7 +56,7 @@
           :doc "Get a yeast suitable for a specific drink type"
           :req {
             :headers {"Authorization" "psv+Bearer token"}
-            :query-params {"drink" "psv+drink"}
+            :query-params {:required {"drink" "psv+drink"}}
             :gen {"drink" {:type "String" :examples ["ale" "lager"]}}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/yeasts/saccharomyces-cerevisiae"}
@@ -79,7 +79,7 @@
           :doc "Get a flavouring suitable for a specific drink type"
           :req {
             :headers {"Authorization" "psv+Bearer token"}
-            :query-params {"drink" "psv+drink"}
+            :query-params {:required {"drink" "psv+drink"}}
             :gen {"drink" {:type "String" :examples ["ale" "lager"]}}
           }
           :rsp {:success-code 200 :content-type "text/plain" :body "/flavourings/golding-hops"}
